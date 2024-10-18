@@ -93,3 +93,44 @@
   color: rgb(254, 114, 114);
   font-weight: bold;
 }
+@media (max-width: 700px) {
+  .chartFilterContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  /* Adjust the filter items for better display */
+  .filterItem {
+    font-size: 14px;
+    margin-right: 0;
+  }
+
+  .chartControls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .fullScreen,
+  .compare {
+    font-size: 14px;
+    justify-content: flex-start;
+  }
+
+  .timeRange button {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+
+  .emptyContainer {
+    font-size: 18px;
+    height: 300px;
+  }
+
+  .leftContainer {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+}

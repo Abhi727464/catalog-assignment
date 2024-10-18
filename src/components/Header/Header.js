@@ -3,8 +3,12 @@ import styles from "./header.module.css";
 import { Tab, Tabs } from "@mui/material";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 const Header = ({ coinData, toggleScreen, handleChange, value }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div
       className={
@@ -62,7 +66,14 @@ const Header = ({ coinData, toggleScreen, handleChange, value }) => {
         </div>
       </div>
       <div className={styles.tabContainer}>
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant={isSmallScreen ? "scrollable" : "standard"}
+          scrollButtons={isSmallScreen ? "auto" : false}
+          allowScrollButtonsMobile
+          aria-label="responsive tabs"
+        >
           <Tab label="Summary" className={styles.tab} />
           <Tab label="Chart" className={styles.tab} />
           <Tab label="Statistics" className={styles.tab} />

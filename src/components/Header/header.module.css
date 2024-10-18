@@ -45,3 +45,77 @@
 .tab:hover {
   color: #4b40ee;
 }
+
+.priceContainer {
+  width: 80%;
+  margin: 20px auto 0px auto;
+}
+.priceContainer h1 {
+  font-size: 60px;
+  padding: 10px;
+}
+
+.priceContainer p {
+  font-size: 20px;
+  padding-left: 10px;
+}
+.headerContainer {
+  height: 200px;
+  opacity: 1;
+  transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.toggleHeaderScreen {
+  height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.tabContainer {
+  margin: 20px auto;
+  border-bottom: 1px solid rgb(234, 234, 234);
+  background-color: white;
+  padding: 10px;
+}
+.tab {
+  font-size: 18px;
+  font-weight: bold;
+  color: #888;
+  text-transform: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 12px 20px;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: #4b40ee;
+}
+
+@media (max-width: 700px) {
+  .priceContainer {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  .priceContainer h1 {
+    font-size: 40px;
+  }
+
+  .priceContainer p {
+    font-size: 16px;
+  }
+
+  .headerContainer {
+    height: 200px;
+  }
+  .tabContainer {
+    font-size: 10px;
+  }
+  .tab {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+}
