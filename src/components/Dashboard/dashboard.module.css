@@ -3,73 +3,6 @@
   margin: 0px auto;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.priceContainer {
-  width: 80%;
-  margin: 30px auto 0px auto;
-}
-.priceContainer h1 {
-  font-size: 60px;
-  padding: 10px;
-}
-
-.priceContainer p {
-  font-size: 20px;
-  padding-left: 10px;
-}
-.headerContainer {
-  max-height: 250px; /* Set initial height */
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  overflow: hidden; /* Hide overflow during transition */
-  opacity: 1; /* Ensure it starts fully visible */
-}
-
-.toggleHeaderScreen {
-  max-height: 0; /* Collapse to zero height */
-  opacity: 0; /* Fade out */
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-.tabContainer {
-  /* width: 80%; */
-  margin: 20px auto;
-}
-
-.tabContainer {
-  /* width: 95%; */
-  margin: 20px auto;
-  /* box-shadow: rgba(99, 99, 99, 0.2) 7px 0px 0px 0px; */
-  border-bottom: 1px solid rgb(234, 234, 234);
-  background-color: white;
-  /* border-radius: 8px; */
-  padding: 10px;
-}
-
-/* Styling individual Tab components */
-.tab {
-  font-size: 18px;
-  font-weight: bold;
-  color: #888; /* Unselected tab color */
-  text-transform: none;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  padding: 12px 20px;
-  min-width: 100px;
-  cursor: pointer;
-}
-
-.tab:hover {
-  color: #4b40ee; /* Hover color */
-}
-
-.activeTab {
-  color: #5144ff !important; /* Active tab text color */
-  background: rgba(75, 64, 238, 0.1); /* Active tab background color */
-  border-radius: 4px;
-}
-
-.tabsIndicator {
-  background-color: #4b40ee; /* Color of the bottom indicator */
-  height: 3px; /* Thickness of the indicator */
-  border-radius: 3px;
-}
 .chartFilterContainer {
   display: flex;
   align-items: center;
@@ -156,4 +89,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  color: rgb(254, 114, 114);
+  font-weight: bold;
 }

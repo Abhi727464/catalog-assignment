@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./dashboard.module.css";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Chart from "../Chart/Chart";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import { CircularProgress } from "@mui/material";
 import { settingChartData } from "../utlls/Helper";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
+import { TIME_RANGES } from "../utlls/constant";
+import Header from "../Header/Header";
+import EmptyDiv from "../EmptyDiv";
 
 const Dashboard = () => {
   const [coinData, setCoinData] = useState(null);
@@ -21,21 +22,11 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [toggleScreen, setToggleScreen] = useState(true);
 
-  const timeRanges = {
-    "1d": 1,
-    "3d": 3,
-    "1w": 7,
-    "1m": 30,
-    "6m": 180,
-    "1y": 365,
-    max: 365,
-  };
-
   const [activeRange, setActiveRange] = useState("1w"); // Default selected range
 
   const handleRangeChange = (range) => {
     setActiveRange(range);
-    const days = timeRanges[range];
+    const days = TIME_RANGES[range];
     setCoinPrices(days);
   };
 
@@ -83,56 +74,13 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboardContainer}>
-      <div
-        className={
-          toggleScreen ? styles.headerContainer : styles.toggleHeaderScreen
-        }
-      >
-        <div className={styles.priceContainer}>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <img
-              style={{ width: "60px", height: "60px", marginTop: "10px" }}
-              src={coinData?.image?.large}
-              alt=""
-            />
-            <div>
-              {coinData && (
-                <>
-                  <h1>
-                    {coinData.market_data.current_price.usd.toFixed(2)}{" "}
-                    <span>USD</span>
-                  </h1>
-                  <p
-                    style={{
-                      color:
-                        coinData?.market_data.price_change_percentage_24h < 0
-                          ? "red"
-                          : "#67bf6b",
-                    }}
-                  >
-                    {coinData?.market_data?.price_change_24h?.toFixed(2)} (
-                    {coinData?.market_data?.price_change_percentage_24h?.toFixed(
-                      2
-                    )}{" "}
-                    %)
-                  </p>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className={styles.tabContainer}>
-          <Tabs value={value} onChange={handleChange}>
-            <Tab label="Summary" />
-            <Tab label="Chart" />
-            <Tab label="Statistics" />
-            <Tab label="Analytics" />
-            <Tab label="Settings" />
-          </Tabs>
-        </div>
-      </div>
-
-      {value === 1 && (
+      <Header
+        coinData={coinData}
+        value={value}
+        handleChange={handleChange}
+        toggleScreen={toggleScreen}
+      />
+      {value === 1 ? (
         <>
           <div className={styles.subTab}>
             <div className={styles.chartFilterContainer}>
@@ -159,7 +107,7 @@ const Dashboard = () => {
               </div>
               <div className={styles.chartControls}>
                 <div className={styles.timeRange}>
-                  {Object.keys(timeRanges).map((range) => (
+                  {Object.keys(TIME_RANGES).map((range) => (
                     <button
                       key={range}
                       className={activeRange === range ? styles.active : ""}
@@ -192,6 +140,8 @@ const Dashboard = () => {
             )}
           </div>
         </>
+      ) : (
+        <EmptyDiv />
       )}
     </div>
   );
