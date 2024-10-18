@@ -1,6 +1,6 @@
 .priceContainer {
   width: 80%;
-  margin: 30px auto 0px auto;
+  margin: 20px auto 0px auto;
 }
 .priceContainer h1 {
   font-size: 60px;
@@ -12,19 +12,20 @@
   padding-left: 10px;
 }
 .headerContainer {
-  max-height: 250px;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  overflow: hidden;
+  height: 200px;
   opacity: 1;
+  transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .toggleHeaderScreen {
-  max-height: 0;
+  height: 0px;
   opacity: 0;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none;
 }
+
 .tabContainer {
-  /* width: 95%; */
   margin: 20px auto;
   border-bottom: 1px solid rgb(234, 234, 234);
   background-color: white;
@@ -42,5 +43,5 @@
 }
 
 .tab:hover {
-  color: #4b40ee; /* Hover color */
+  color: #4b40ee;
 }

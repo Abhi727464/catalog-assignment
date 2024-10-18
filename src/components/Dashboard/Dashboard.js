@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [toggleScreen, setToggleScreen] = useState(true);
 
-  const [activeRange, setActiveRange] = useState("1w"); // Default selected range
+  const [activeRange, setActiveRange] = useState("1w");
 
   const handleRangeChange = (range) => {
     setActiveRange(range);
@@ -35,19 +35,22 @@ const Dashboard = () => {
   };
 
   const getCoinData = async () => {
+    setLoading(true);
     await axios
       .get(`https://api.coingecko.com/api/v3/coins/bitcoin`)
       .then((response) => {
         setCoinData(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("ERROR>>>", error);
+        setLoading(false);
       });
   };
 
-  const getCoinPrices = (id, days) => {
+  const getCoinPrices = async (id, days) => {
     setLoading(true);
-    axios
+    await axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
       )
@@ -66,8 +69,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchCoinDataAndPrices = async () => {
-      await getCoinData(); // Fetch coin data
-      getCoinPrices("bitcoin", coinPrices); // Fetch prices only after coin data
+      await getCoinData();
+      getCoinPrices("bitcoin", coinPrices);
     };
     fetchCoinDataAndPrices();
   }, [coinPrices, activeRange]);
@@ -121,7 +124,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Chart Container with smooth transition */}
           <div
             className={`${styles.chartContainer} ${
               toggleScreen ? styles.expanded : ""

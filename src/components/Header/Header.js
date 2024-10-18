@@ -23,7 +23,16 @@ const Header = ({ coinData, toggleScreen, handleChange, value }) => {
               <>
                 <h1>
                   {coinData.market_data.current_price.usd.toFixed(2)}{" "}
-                  <span>USD</span>
+                  <span
+                    style={{
+                      fontSize: "25px",
+                      color: "darkgray",
+                      position: "absolute",
+                      padding: "10px 0 0 5px",
+                    }}
+                  >
+                    USD
+                  </span>
                 </h1>
                 <p
                   style={{
@@ -33,6 +42,7 @@ const Header = ({ coinData, toggleScreen, handleChange, value }) => {
                         : "#67bf6b",
                     display: "flex",
                     alignItems: "center",
+                    gap: "5px",
                   }}
                 >
                   {coinData?.market_data.price_change_percentage_24h < 0 ? (
