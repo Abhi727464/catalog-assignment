@@ -1,6 +1,6 @@
 ### Documentation
 
-# Real time data crypto data tracker
+# Real Time Crypto Data Tracker
 
 ## Overview
 
